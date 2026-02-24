@@ -68,9 +68,11 @@ window.onkeypress(move_left2, "a")
 window.onkeypress(move_right2, "d")
 # Section 3: Game Loop
 window.listen()
+
+
 for i in range(10000000000):
     message_sprite.clear()
-    message_sprite.write(f"mario points:{mario_score}\nluigi points:{luigi_score}",font=("Arial",30,"normal"))
+    message_sprite.write(f"mario points:{mario_score}\nluigi points:{luigi_score}",font=("Arial",30,"normal"))  
     if get_distance(s1,s2)<100:
         if who_is_it == "mario":
             mario_score+=1
@@ -82,22 +84,17 @@ for i in range(10000000000):
             who_is_it = "mario"
             s1.goto(250,0)
             s2.goto(-250,0)
+    if i >=30*100:
+        break
         
-    # TODO - add code for automatic actions
-   
-
-
-    # TODO - make an if statement for ending the game
-
-    
     time.sleep(0.01)
     window.update()
-    
-    if i >= 30 * 100:
-    
-        if mario_score>=luigi_score:
-            print ("mario wins")
-        if luigi_score>=mario_score:
-            print ("luigi wins")
 	
-print("Game Over")
+
+if i >= 30*100:
+    if mario_score>=luigi_score:
+        print ("mario won")
+    if luigi_score>=mario_score:
+        print ("luigi won")
+
+print ("game over")
